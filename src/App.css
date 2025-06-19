@@ -1,0 +1,8 @@
+.custom-rate .ant-rate-star-zero .anticon {
+  color: white !important; /* ikon kosong jadi putih */
+}
+
+.custom-rate .ant-rate-star-full .anticon,
+.custom-rate .ant-rate-star-half .anticon {
+  color: #fadb14; /* kuning default */
+}
