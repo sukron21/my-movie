@@ -23,13 +23,7 @@ const Navbar = ({ classNames }: Nav) => {
         <CaretRightOutlined className="text-[30px]" />
         <span className="font-semibold">MyMovie</span>
       </div>
-      {/* <div className="flex items-center gap-6">
-        <span className="font-semibold">Home</span>
-        <span className="font-semibold">Now Playing</span>
-        <span className="font-semibold">Popular</span>
-        <span className="font-semibold">Top Rated</span>
-        <span className="font-semibold">Upcoming</span>
-      </div> */}
+
       <div className="flex items-center gap-4">
         <Input.Search
           placeholder="Search your movie"
@@ -38,20 +32,7 @@ const Navbar = ({ classNames }: Nav) => {
           enterButton={<SearchOutlined style={{ color: "blue" }} />}
           onSearch={handleSearch}
         />
-        {/* <Switch
-          className="border border-black-500"
-          defaultChecked={checked}
-          checked={checked}
-          onClick={() => isChecked(!checked)}
-          checkedChildren={<MoonOutlined />}
-          unCheckedChildren={<SunOutlined style={{ color: "yellow" }} />}
-          style={{
-            backgroundColor: checked ? "black" : "#E5E7EB ",
-          }}
-        /> */}
       </div>
-      {/* ← Include search logic di sini */}
-      {/* <NavLinks /> */}
     </nav>
   );
 };
