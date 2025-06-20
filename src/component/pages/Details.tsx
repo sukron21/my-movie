@@ -10,7 +10,6 @@ export const Details = () => {
   const [isDataPoster, setIsDataPoster] = useState<dataDashboard>();
   const [isData, setIsData] = useState<dataDashboard[]>([]);
   const [current, setCurrent] = useState(1);
-  //   const [newParams, setIsParams] = useState("");
 
   useEffect(() => {
     getDataData();
@@ -37,7 +36,6 @@ export const Details = () => {
         isLoading={isLoading}
         dataPoster={isDataPoster}
         data={isData}
-        // categorys={categoryHandler(id ? id : "")}
         setCurrent={setCurrent}
         current={current}
       />

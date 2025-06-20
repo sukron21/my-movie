@@ -12,7 +12,10 @@ export const Banner = ({ dataPoster }: dashboardDatas) => {
   const year = dataPoster?.release_date?.split("-")[0];
   return (
     <>
-      <ImageBg bgDashboard={bgDashboard}>
+      <ImageBg
+        bgDashboard={bgDashboard}
+        classNames="flex justify-center items-center"
+      >
         <div className="absolute ml-[5vw] z-20 w-3/5 flex flex-col items-center drop-shadow-lg">
           <h1 className="text-[40px]">
             {dataPoster?.title} ({year})
@@ -25,7 +28,7 @@ export const Banner = ({ dataPoster }: dashboardDatas) => {
               className="custom-rate"
             />
             <p className="text-[14px] px-4">
-              {dataPoster ? dataPoster.vote_average / 2 : 0}
+              {dataPoster ? (dataPoster.vote_average / 2).toFixed(1) : 0}
             </p>
           </div>
           <div className="flex gap-4 pt-4">

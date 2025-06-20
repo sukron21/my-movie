@@ -1,6 +1,11 @@
-export const Footer = () => {
+interface iFooter {
+  className?: string;
+}
+export const Footer = ({ className }: iFooter) => {
   return (
-    <footer className="bg-black text-white py-6 mt-10 text-center text-sm">
+    <footer
+      className={`bg-black text-white py-6 mt-10 text-center text-sm ${className}`}
+    >
       <p>
         This product uses the TMDB API but is not endorsed or certified by TMDB.
       </p>

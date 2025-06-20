@@ -1,22 +1,26 @@
 import { StarFilled } from "@ant-design/icons";
-import { useNavigate } from "react-router-dom";
 import type { dataDashboard } from "../../helper/interface";
+import { CardImage } from "../atoms/cards";
 
 interface cardMovies {
   data: dataDashboard;
 }
 export function MovieCard({ data }: cardMovies) {
-  const navigate = useNavigate();
   return (
-    <div
-      className="w-full h-72 bg-cover bg-center rounded-lg relative cursor-pointer"
-      style={{
-        backgroundImage: data?.poster_path
-          ? `url(https://image.tmdb.org/t/p/w500${data?.poster_path})`
-          : "none",
-        backgroundColor: data?.poster_path ? "transparent" : "#333",
-      }}
-      onClick={() => navigate(`/detail/${data.id}-${data.title}`)}
+    // <div
+    //   className="w-full h-72 bg-cover bg-center rounded-lg relative cursor-pointer"
+    //   style={{
+    //     backgroundImage: data?.poster_path
+    //       ? `url(https://image.tmdb.org/t/p/w500${data?.poster_path})`
+    //       : "none",
+    //     backgroundColor: data?.poster_path ? "transparent" : "#333",
+    //   }}
+    //   onClick={() => navigate(`/detail/${data.id}-${data.title}`)}
+    // >
+    <CardImage
+      bg={data?.poster_path}
+      type="list"
+      params={`${data.id}-${data.title}`}
     >
       <div className="w-1/3 h-[30px] bg-[#1A1919] bg-opacity-50 flex justify-center items-center px-2 py-2">
         <StarFilled className="text-yellow-600" />
@@ -32,6 +36,7 @@ export function MovieCard({ data }: cardMovies) {
           ({data?.release_date?.split("-")[0]})
         </p>
       </div>
-    </div>
+    </CardImage>
+    // </div>
   );
 }
