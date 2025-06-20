@@ -15,7 +15,7 @@ interface dashboardDatas {
   data?: dataDashboard[];
   isLoading: boolean;
   categorys: string;
-  setCurrent: any;
+  setCurrent: (page: number) => void;
   current: number;
   totalPage: number;
 }
@@ -28,7 +28,7 @@ export function SearchTemplate({
   current,
   totalPage,
 }: dashboardDatas) {
-  const [checked, isChecked] = useState(true);
+  const [checked] = useState(true);
   const { id } = useParams();
   const onChange: PaginationProps["onChange"] = (page) => {
     setCurrent(page);
@@ -38,11 +38,7 @@ export function SearchTemplate({
     <div className="bg-[#030a1b] text-white h-[100%] pt-25">
       {isLoading ? (
         <div>
-          <Navbar
-            checked={checked}
-            isChecked={isChecked}
-            classNames="my-4 fixed "
-          />
+          <Navbar checked={checked} classNames="my-4 fixed " />
           <div className="w-full h-[100vh] flex justify-center items-center">
             <Spinner />
           </div>
@@ -50,11 +46,7 @@ export function SearchTemplate({
       ) : (
         <>
           <div className="w-full flex justify-center">
-            <Navbar
-              checked={checked}
-              isChecked={isChecked}
-              classNames="my-4 fixed"
-            />
+            <Navbar checked={checked} classNames="my-4 fixed" />
           </div>
           <div className=" ml-4 pt-24 pb-6">
             <h1 className="border-b border-white text-[34px]">Search: {id}</h1>

@@ -21,7 +21,7 @@ interface dashboardDatas {
 }
 
 export function DetailTemplate({ dataPoster, isLoading }: dashboardDatas) {
-  const [checked, isChecked] = useState(true);
+  const [checked] = useState(true);
   const bgDashboard = `${imageBaseUrl}${dataPoster?.backdrop_path}`;
   const bgCardMovie = `${imageBaseUrl}${dataPoster?.poster_path}`;
   console.log();
@@ -32,7 +32,7 @@ export function DetailTemplate({ dataPoster, isLoading }: dashboardDatas) {
         <div>
           <Navbar
             checked={checked}
-            isChecked={isChecked}
+            // isChecked={isChecked}
             classNames="my-4 fixed"
           />
           <div className="w-full h-[100vh] flex justify-center items-center">
@@ -44,7 +44,7 @@ export function DetailTemplate({ dataPoster, isLoading }: dashboardDatas) {
           <div className="w-full flex justify-center">
             <Navbar
               checked={checked}
-              isChecked={isChecked}
+              // isChecked={isChecked}
               classNames="my-4 fixed"
             />
             <ImageBg

@@ -15,7 +15,7 @@ interface dashboardDatas {
   data?: dataDashboard[];
   isLoading: boolean;
   categorys: string;
-  setCurrent: any;
+  setCurrent: (page: number) => void;
   current: number;
   totalPage: number;
 }
@@ -29,7 +29,7 @@ export function CategoryTemplate({
   current,
   totalPage,
 }: dashboardDatas) {
-  const [checked, isChecked] = useState(true);
+  const [checked] = useState(true);
   const onChange: PaginationProps["onChange"] = (page) => {
     setCurrent(page);
   };
@@ -38,11 +38,7 @@ export function CategoryTemplate({
     <div className="bg-[#030a1b] h-[100%]">
       {isLoading ? (
         <div>
-          <Navbar
-            checked={checked}
-            isChecked={isChecked}
-            classNames="my-4 fixed"
-          />
+          <Navbar checked={checked} classNames="my-4 fixed" />
           <div className="w-full h-[100vh] flex justify-center items-center">
             <Spinner />
           </div>
@@ -50,11 +46,7 @@ export function CategoryTemplate({
       ) : (
         <>
           <div className="w-full flex justify-center">
-            <Navbar
-              checked={checked}
-              isChecked={isChecked}
-              classNames="my-4 fixed"
-            />
+            <Navbar checked={checked} classNames="my-4 fixed" />
             <Banner dataPoster={dataPoster} />
           </div>
           <div className="flex items-stretch py-8">
