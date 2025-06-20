@@ -3,6 +3,7 @@ import { Button, Rate } from "antd";
 import { ImageBg } from "../atoms/imageBackground";
 import { imageBaseUrl } from "../../helper/env";
 import type { dataDashboard } from "../../helper/interface";
+import { useNavigate } from "react-router-dom";
 
 interface dashboardDatas {
   dataPoster?: dataDashboard;
@@ -10,6 +11,7 @@ interface dashboardDatas {
 export const Banner = ({ dataPoster }: dashboardDatas) => {
   const bgDashboard = `${imageBaseUrl}${dataPoster?.backdrop_path}`;
   const year = dataPoster?.release_date?.split("-")[0];
+  const navigate = useNavigate();
   return (
     <>
       <ImageBg
@@ -41,6 +43,9 @@ export const Banner = ({ dataPoster }: dashboardDatas) => {
                 borderRadius: "20px",
                 height: "35px",
               }}
+              onClick={() =>
+                navigate(`/detail/${dataPoster?.id}-${dataPoster?.title}`)
+              }
             >
               <CaretRightOutlined />
               Watch Movie
@@ -54,6 +59,9 @@ export const Banner = ({ dataPoster }: dashboardDatas) => {
                 borderRadius: "20px",
                 height: "35px",
               }}
+              onClick={() =>
+                navigate(`/detail/${dataPoster?.id}-${dataPoster?.title}`)
+              }
             >
               More Info <ArrowRightOutlined />
             </Button>

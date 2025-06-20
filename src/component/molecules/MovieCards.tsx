@@ -7,16 +7,6 @@ interface cardMovies {
 }
 export function MovieCard({ data }: cardMovies) {
   return (
-    // <div
-    //   className="w-full h-72 bg-cover bg-center rounded-lg relative cursor-pointer"
-    //   style={{
-    //     backgroundImage: data?.poster_path
-    //       ? `url(https://image.tmdb.org/t/p/w500${data?.poster_path})`
-    //       : "none",
-    //     backgroundColor: data?.poster_path ? "transparent" : "#333",
-    //   }}
-    //   onClick={() => navigate(`/detail/${data.id}-${data.title}`)}
-    // >
     <CardImage
       bg={data?.poster_path}
       type="list"
@@ -37,6 +27,5 @@ export function MovieCard({ data }: cardMovies) {
         </p>
       </div>
     </CardImage>
-    // </div>
   );
 }
