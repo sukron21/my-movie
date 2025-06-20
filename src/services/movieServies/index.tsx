@@ -15,9 +15,11 @@ export const movieService = {
   getUpCamingMovies: (page: number) =>
     axios.get(`${BASE_URL}/movie/upcoming?api_key=${API_KEY}&page=${page}`),
 
-  getMovieById: (id: string) =>
+  getMovieById: (id: number) =>
     axios.get(`${BASE_URL}/movie/${id}?api_key=${API_KEY}`),
 
-  searchMovies: (query: string) =>
-    axios.get(`${BASE_URL}/search/movie?api_key=${API_KEY}&query=${query}`),
+  searchMovies: (page: number, query: string) =>
+    axios.get(
+      `${BASE_URL}/search/movie?api_key=${API_KEY}&page=${page}&query=${query}`
+    ),
 };

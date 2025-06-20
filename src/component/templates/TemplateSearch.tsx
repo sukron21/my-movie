@@ -7,7 +7,7 @@ import { MovieList } from "../organisms/MovieList";
 import Spinner from "../atoms/Spinner";
 import { Footer } from "../atoms/footer";
 import { Filters } from "../organisms/Filter";
-import { Banner } from "../organisms/Banner";
+import { useParams } from "react-router-dom";
 import type { dataDashboard } from "../../helper/interface";
 
 interface dashboardDatas {
@@ -20,8 +20,7 @@ interface dashboardDatas {
   totalPage: number;
 }
 
-export function CategoryTemplate({
-  dataPoster,
+export function SearchTemplate({
   data,
   isLoading,
   categorys,
@@ -30,18 +29,19 @@ export function CategoryTemplate({
   totalPage,
 }: dashboardDatas) {
   const [checked, isChecked] = useState(true);
+  const { id } = useParams();
   const onChange: PaginationProps["onChange"] = (page) => {
     setCurrent(page);
   };
 
   return (
-    <div className="bg-[#030a1b] h-[100%]">
+    <div className="bg-[#030a1b] text-white h-[100%] pt-25">
       {isLoading ? (
         <div>
           <Navbar
             checked={checked}
             isChecked={isChecked}
-            classNames="my-4 fixed"
+            classNames="my-4 fixed "
           />
           <div className="w-full h-[100vh] flex justify-center items-center">
             <Spinner />
@@ -55,9 +55,11 @@ export function CategoryTemplate({
               isChecked={isChecked}
               classNames="my-4 fixed"
             />
-            <Banner dataPoster={dataPoster} />
           </div>
-          <div className="flex items-stretch py-8">
+          <div className=" ml-4 pt-24 pb-6">
+            <h1 className="border-b border-white text-[34px]">Search: {id}</h1>
+          </div>
+          <div className="flex items-stretch ">
             <div className="w-1/4 ml-4 ">
               <Filters />
             </div>

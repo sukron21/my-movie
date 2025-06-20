@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import { type dataDashboard } from "../templates/TemplateHome";
 import { movieService } from "../../services/movieServies";
 import { useParams } from "react-router-dom";
 import { CategoryTemplate } from "../templates/TemplateCategory";
+import type { dataDashboard } from "../../helper/interface";
 
 const Handlerapi = (categorys: string, page: number) => {
   switch (categorys) {
@@ -41,6 +41,7 @@ export const Category = () => {
   const [isData, setIsData] = useState<dataDashboard[]>([]);
   const [current, setCurrent] = useState(1);
   const [total, setIstotal] = useState(0);
+  const [newParams, setIsParams] = useState("");
 
   useEffect(() => {
     getDataData();
@@ -50,10 +51,23 @@ export const Category = () => {
     try {
       setIsLoading(true);
       const params = categoryHandler(id ? id : "");
-      const responsePopuler = await Handlerapi(params, current);
-      if (current == 1) {
-        const datas = responsePopuler ? responsePopuler?.data?.results[0] : {};
-        setIsDataPoster(datas);
+      let page = current;
+      if (newParams != params) {
+        page = 1;
+      }
+      const responsePopuler = await Handlerapi(params, page);
+      console.log("responsePopuler", responsePopuler);
+
+      if (newParams != params) {
+        // const page = 1;
+        setCurrent(page);
+        setIsParams(params);
+        if (page) {
+          const datas = responsePopuler
+            ? responsePopuler?.data?.results[0]
+            : {};
+          setIsDataPoster(datas);
+        }
       }
       setIstotal(responsePopuler?.data?.total_results);
       setIsData(responsePopuler?.data?.results);

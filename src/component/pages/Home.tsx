@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
-import { DashBoards, type dataDashboard } from "../templates/TemplateHome";
+import { DashBoards } from "../templates/TemplateHome";
 import { movieService } from "../../services/movieServies";
+import type { dataDashboard } from "../../helper/interface";
 
 export const Home = () => {
   const [isLoading, setIsLoading] = useState(false);

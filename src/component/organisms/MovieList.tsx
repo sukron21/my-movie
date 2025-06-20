@@ -1,7 +1,7 @@
 import { ArrowRightOutlined } from "@ant-design/icons";
 import { MovieCard } from "../molecules/MovieCards";
-import type { dataDashboard } from "../templates/TemplateHome";
 import { useNavigate, useParams } from "react-router-dom";
+import type { dataDashboard } from "../../helper/interface";
 
 interface movieList {
   category: string;

@@ -1,23 +1,8 @@
 import { useEffect, useState } from "react";
-import { type dataDashboard } from "../templates/TemplateHome";
 import { movieService } from "../../services/movieServies";
 import { useParams } from "react-router-dom";
-import { CategoryTemplate } from "../templates/TemplateCategory";
-
-const Handlerapi = (categorys: string, page: number) => {
-  switch (categorys) {
-    case "Now Playing":
-      return movieService.getNowPlayingMovies(page);
-    case "Popular Film":
-      return movieService.getPopularMovies(page);
-    case "Top Rate":
-      return movieService.getTopRaterMovies(page);
-    case "Upcoming":
-      return movieService.getUpCamingMovies(page);
-    default:
-      return movieService.getNowPlayingMovies(page);
-  }
-};
+import { SearchTemplate } from "../templates/TemplateSearch";
+import type { dataDashboard } from "../../helper/interface";
 
 const categoryHandler = (id: string) => {
   switch (id) {
@@ -34,13 +19,13 @@ const categoryHandler = (id: string) => {
   }
 };
 
-export const Category = () => {
+export const Searching = () => {
   const { id } = useParams();
   const [isLoading, setIsLoading] = useState(false);
-  const [isDataPoster, setIsDataPoster] = useState<dataDashboard>();
   const [isData, setIsData] = useState<dataDashboard[]>([]);
   const [current, setCurrent] = useState(1);
   const [total, setIstotal] = useState(0);
+  const [newParams, setIsParams] = useState("");
 
   useEffect(() => {
     getDataData();
@@ -49,11 +34,12 @@ export const Category = () => {
   const getDataData = async () => {
     try {
       setIsLoading(true);
-      const params = categoryHandler(id ? id : "");
-      const responsePopuler = await Handlerapi(params, current);
-      if (current == 1) {
-        const datas = responsePopuler ? responsePopuler?.data?.results[0] : {};
-        setIsDataPoster(datas);
+      const params = id ? id : "";
+      const responsePopuler = await movieService.searchMovies(current, params);
+      console.log("newParams", newParams != params);
+      if (newParams != params) {
+        setIsParams(params);
+        setCurrent(1);
       }
       setIstotal(responsePopuler?.data?.total_results);
       setIsData(responsePopuler?.data?.results);
@@ -64,9 +50,8 @@ export const Category = () => {
   };
   return (
     <>
-      <CategoryTemplate
+      <SearchTemplate
         isLoading={isLoading}
-        dataPoster={isDataPoster}
         data={isData}
         categorys={categoryHandler(id ? id : "")}
         setCurrent={setCurrent}

@@ -10,13 +10,12 @@ interface Nav {
 const Navbar = ({ classNames }: Nav) => {
   const navigate = useNavigate();
   const handleSearch = (value: string) => {
-    console.log("Search:", value);
-    // navigate(`/search/${value}`);
+    navigate(`/search/${value}`);
   };
   //   const [checked, isChecked] = useState(true);
   return (
     <nav
-      className={`w-[90vw] z-50 text-white flex justify-between bg-[#1A1919] bg-opacity-20 border border-blue-500 rounded mx-4 my-4 py-2 px-2 ${classNames}`}
+      className={`w-[90vw] z-50 text-white flex justify-between bg-[#1A1919] bg-opacity-20 border border-blue-500 rounded mx-4 py-2 px-2 ${classNames}`}
     >
       {/* <Logo /> */}
       <div
