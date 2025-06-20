@@ -6,3 +6,42 @@
 .custom-rate .ant-rate-star-half .anticon {
   color: #fadb14; /* kuning default */
 }
+
+.custom-pagination .ant-pagination-item {
+  background-color: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.custom-pagination .ant-pagination-item a {
+  color: white;
+}
+
+.custom-pagination .ant-pagination-item:hover {
+  border-color: white;
+}
+
+.custom-pagination .ant-pagination-item-active {
+  background-color: white;
+  border-color: white;
+}
+
+.custom-pagination .ant-pagination-item-active a {
+  color: black;
+  font-weight: bold;
+}
+
+/* Prev / Next arrows */
+.custom-pagination .ant-pagination-prev,
+.custom-pagination .ant-pagination-next {
+  color: white;
+}
+
+.custom-pagination .ant-pagination-disabled {
+  opacity: 0.4;
+  color: gray;
+}
+
+.custom-pagination .ant-pagination-prev svg,
+.custom-pagination .ant-pagination-next svg {
+  fill: white !important;
+}

@@ -1,5 +1,6 @@
-import { CaretRightOutlined } from "@ant-design/icons";
+import { CaretRightOutlined, SearchOutlined } from "@ant-design/icons";
 import { Input } from "antd";
+import { useNavigate } from "react-router-dom";
 
 interface Nav {
   classNames?: string;
@@ -7,29 +8,38 @@ interface Nav {
   isChecked?: any;
 }
 const Navbar = ({ classNames }: Nav) => {
+  const navigate = useNavigate();
+  const handleSearch = (value: string) => {
+    console.log("Search:", value);
+    // navigate(`/search/${value}`);
+  };
   //   const [checked, isChecked] = useState(true);
   return (
     <nav
-      className={`w-[90vw] text-white flex justify-between bg-[#1A1919] bg-opacity-20 border border-blue-500 rounded mx-4 my-4 py-2 px-2 ${classNames}`}
+      className={`w-[90vw] z-50 text-white flex justify-between bg-[#1A1919] bg-opacity-20 border border-blue-500 rounded mx-4 my-4 py-2 px-2 ${classNames}`}
     >
       {/* <Logo /> */}
-      <div className="flex justify-center items-center cursor-pointer">
+      <div
+        className="flex justify-center items-center cursor-pointer"
+        onClick={() => navigate(`/`)}
+      >
         <CaretRightOutlined className="text-[30px]" />
         <span className="font-semibold">MyMovie</span>
       </div>
-      <div className="flex items-center gap-6">
+      {/* <div className="flex items-center gap-6">
         <span className="font-semibold">Home</span>
         <span className="font-semibold">Now Playing</span>
         <span className="font-semibold">Popular</span>
         <span className="font-semibold">Top Rated</span>
         <span className="font-semibold">Upcoming</span>
-      </div>
+      </div> */}
       <div className="flex items-center gap-4">
         <Input.Search
           placeholder="Search your movie"
           variant="filled"
           className=" w-[250px] placeholder-white bg-white border border-black-500  rounded"
-          //   enterButton={<SearchOutlined style={{ color: "white" }} />}
+          enterButton={<SearchOutlined style={{ color: "blue" }} />}
+          onSearch={handleSearch}
         />
         {/* <Switch
           className="border border-black-500"
