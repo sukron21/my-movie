@@ -8,8 +8,8 @@ interface IBanner {
 export const ImageBg = ({
   bgDashboard,
   children,
-  classNames,
-  classNameOpacity,
+  classNames = "",
+  classNameOpacity = "",
 }: IBanner) => {
   return (
     <div
@@ -17,7 +17,10 @@ export const ImageBg = ({
       style={{ backgroundImage: `url(${bgDashboard})` }}
     >
       <div
-        className={`absolute h-[70vh] inset-0 bg-black opacity-50 z-10 ${classNameOpacity}`}
+        data-testid="overlay"
+        className={`absolute h-[70vh] inset-0 bg-black opacity-50 z-10 ${
+          classNameOpacity || ""
+        }`}
       ></div>
       {children}
     </div>
