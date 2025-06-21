@@ -24,7 +24,7 @@ export function DashBoards({
   dataPopuler,
   isLoading,
 }: dashboardDatas) {
-  const [checked, isChecked] = useState(true);
+  const [checked] = useState(true);
 
   return (
     <div className="bg-[#030a1b] h-[100%]">
@@ -32,7 +32,7 @@ export function DashBoards({
         <div>
           <Navbar
             checked={checked}
-            isChecked={isChecked}
+            // isChecked={isChecked}
             classNames="my-4 fixed"
           />
           <div className="w-full h-[100vh] flex justify-center items-center">
@@ -44,7 +44,7 @@ export function DashBoards({
           <div className="w-full flex justify-center">
             <Navbar
               checked={checked}
-              isChecked={isChecked}
+              // isChecked={isChecked}
               classNames="my-4 fixed"
             />
             <Banner dataPoster={dataPoster} />
